@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace 绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.zhao.dao.UserMapper">
+
+    <select id="getUserList" resultType="com.zhao.pojo.User">
+        select * from mybatis.user
+    </select>
+
+    <insert id="addUser" parameterType="com.zhao.pojo.User"  >
+        insert into mybatis.user (id,name,pwd) value (#{id},#{name},#{pwd});
+    </insert>
+
+    <update id="updateUser" parameterType="com.zhao.pojo.User">
+        update mybatis.user set name=#{name},pwd=#{pwd}   where id=#{id};
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from mybatis.user where id=#{id};
+    </delete>
+</mapper>
+  <!--  <select id="getUserLike" resultType="com.zhao.pojo.User">
+    &#45;&#45; 第二种：sql拼接中使用通配符
+    select * from mybatis.user where name like "%"#{value}"%"
+
+    </select>
+
+&lt;!&ndash;查询 id表示**dao中的方法**  resultType查询结果集**全名** &ndash;&gt;
+
+&lt;!&ndash;parameterType 参数类型&ndash;&gt;
+    <select id="getUserById" parameterType="int" resultType="com.zhao.pojo.User">
+    select  * from mybatis.user where id=#{id}
+    </select>
+&lt;!&ndash;   对象中的属性，可以直接取出&ndash;&gt;
+
+
+&lt;!&ndash;  万能的map&ndash;&gt;
+    <insert id="addUser2" parameterType="map"  >
+        insert into mybatis.user (id,name,pwd) value (#{userid},#{userName},#{password});
+    </insert>-->
+
+
+
